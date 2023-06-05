@@ -3,7 +3,11 @@
         
         <p> <?php echo getInfo("descricao"); ?> </p>
         
-        <ul class="list-group list-group-flush">
-            <?php echo exibeUsuarios(); ?>
+        <hr>
+        <h2>Lista de Produtos</h2>
+        <ul>
+            <?php foreach($produtos as $produto): ?>
+                <li><?php echo number_format($produto['valor'], 2, ", ", ".") ?></li>
+            <?php endforeach; ?>
         </ul>
     </div>

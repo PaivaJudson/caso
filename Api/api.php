@@ -2,6 +2,7 @@
 
     include('config.php');
     include('usuarios.php');
+    include('produtos.php');
 
 
     function getPagina(){
@@ -12,9 +13,11 @@
             
             switch($url){
                 case "/sistema/":
+                    $produtos = getProdutos();
                     include("Paginas/home.php");
                     break;
                 case "/sistema/home/":
+                    $produtos = getProdutos();
                     include("Paginas/home.php");
                     break;
                 case "/sistema/sobre/":
@@ -24,6 +27,7 @@
                     include("Paginas/contato.php");
                     break;
                 default:
+                    $produtos = getProdutos();
                     include("Paginas/home.php");
             }
         }
@@ -32,7 +36,4 @@
             echo "GET"; exit();
         }
 
-
-        //var_dump($_SERVER);exit();
-        //return include("Paginas/home.php");
     }
