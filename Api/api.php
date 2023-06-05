@@ -14,13 +14,13 @@
                 case "/sistema/":
                     include("Paginas/home.php");
                     break;
-                case "/home/":
+                case "/sistema/home/":
                     include("Paginas/home.php");
                     break;
-                case "/sobre/":
+                case "/sistema/sobre/":
                     include("Paginas/sobre.php");
                     break;
-                case "/contato/":
+                case "/sistema/contato/":
                     include("Paginas/contato.php");
                     break;
                 default:
@@ -33,6 +33,6 @@
         }
 
 
-        var_dump($_SERVER);exit();
-        return include("Paginas/home.php");
+        //var_dump($_SERVER);exit();
+        //return include("Paginas/home.php");
     }
