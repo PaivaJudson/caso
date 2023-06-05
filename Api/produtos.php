@@ -9,7 +9,20 @@
         ];
     }
 
-    
+    function buscaProdutos($busca){
+        $produtos = getProdutos();
+        $resultados = [];
+
+        foreach($produtos as $produto){
+            $existe = in_array($busca, $produto);
+
+            if($existe){
+                array_push($resultados, $produto);
+            }
+        }
+
+        return $resultados;
+    }
 
 
 
