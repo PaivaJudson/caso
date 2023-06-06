@@ -10,10 +10,6 @@
             <button>Pesquisar</button>
         </form>
 
-
-
-
-
         <hr>
         <h2>Lista de Produtos</h2>
         <ul>
@@ -22,3 +18,12 @@
             <?php endforeach; ?>
         </ul>
     </div>
+
+    <hr>
+    <h2>Adicionar Produto</h2>
+    <form action="/sistema/adicionar" method="post">
+        <input type="text" name="titulo" placeholder="Título">
+        <input type="text" name="descricao" placeholder="Descrição">
+        <input type="text" name="valor" placeholder="Valor">
+        <button>Adicionar</button>
+    </form>

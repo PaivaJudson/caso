@@ -5,7 +5,7 @@
     include('produtos.php');
     include('db.php');
 
-    
+
     function getPagina(){
         $url = $_SERVER['REQUEST_URI'];
         $metodo = $_SERVER['REQUEST_METHOD'];
@@ -34,7 +34,10 @@
                     // nao esta captando o valor da busca 
                     $produtos = buscaProdutos($_GET['busca']);
                     include("Paginas/home.php");
-                break;
+                    break;
+                case "/sistema/adicionar":
+                    var_dump($_POST); exit();
+                    break;
                 default:
                     $produtos = getProdutos();
                     include("Paginas/home.php");
@@ -42,7 +45,33 @@
         }
 
         if($metodo == "POST"){
-            echo "GET"; exit();
+            switch($url){
+                case "/sistema/":
+                    $produtos = getProdutos();
+                    include("Paginas/home.php");
+                    break;
+                case "/sistema/home/":
+                    $produtos = getProdutos();
+                    include("Paginas/home.php");
+                    break;
+                case "/sistema/sobre/":
+                    include("Paginas/sobre.php");
+                    break;
+                case "/sistema/contato/":
+                    include("Paginas/contato.php");
+                    break;
+                case "/sistema/busca":
+                    // nao esta captando o valor da busca 
+                    $produtos = buscaProdutos($_GET['busca']);
+                    include("Paginas/home.php");
+                    break;
+                case "/sistema/adicionar":
+                    echo adicionarProdutos($_POST);
+                    break;
+                default:
+                    $produtos = getProdutos();
+                    include("Paginas/home.php");
+            }
         }
 
     }
