@@ -38,7 +38,7 @@
 
     function adicionarProdutos($produto){
         $conexao = getConexao();
-        
+
         $inserir = "INSERT INTO PRODUTOS (titulo, descricao, valor) values (:titulo, :descricao, :valor)";
 
         $stmt = $conexao->prepare($inserir);
@@ -51,7 +51,18 @@
         return $conexao->lastInsertId();
     }
 
+    function buscarProdutoID($produtoId){
+        
+        $conexao = getConexao();
 
+        $editar = "select * from produtos where id=:id";
+        $stmt = $conexao->prepare($editar);
+        $stmt->bindValue(':id', (int)$produtoId);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+
+    }
 
 
 ?>

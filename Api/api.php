@@ -36,7 +36,15 @@
                     $produtos = buscaProdutos($_POST['busca']);
                     include("Paginas/home.php");
                     break;
-                case "/sistema/adicionar":
+                case "/sistema/produto/editar":
+
+                    $request = $_SERVER['REQUEST_URI'];
+                    $request = explode("=", $request);
+                    
+                    $produtoEdit = buscarProdutoID($request[1]);
+                    $editando = true;
+                    include("Paginas/home.php");
+                 
                     
                     break;
                 default:
