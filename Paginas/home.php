@@ -18,6 +18,7 @@
                 <?php foreach($produtos as $produto): ?>
                     <li class="list-group-item"><?php echo $produto['titulo']. " - ". $produto['descricao'] . " - " . number_format($produto['valor'], 2, ", ", ".") ?> 
                         <a href="/sistema/produto/editar?id=<?php echo $produto['id'] ?>" class="btn btn-secondary" role="button" aria-disabled="true">Editar</a>
+                        <a href="/sistema/produto/editar?id=<?php echo $produto['id'] ?>" class="btn btn-secondary" role="button" aria-disabled="true">Deletar</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -36,10 +37,10 @@
         <?php endif ?>
         <form action="<?php echo (isset($editando)? '/sistema/produto/salvar':'/sistema/adicionar') ?>" method="post">
             <?php if(isset($editando)): ?>
-                <input type="hidden" name="id" value="<?php echo $produtoEdit ?>">
+                <input type="hidden" name="id" value="<?php echo $produtoEdit['id'] ?>">
             <?php endif; ?>
-            <input type="text" name="titulo" placeholder="Título" value="<?php echo (isset($produtoEdit['titulo'])? $produtoEdit['titulo']: ''); ?>">
-            <input type="text" name="descricao" placeholder="Descrição" value="<?php echo (isset($produtoEdit['descricao'])? $produtoEdit['descricao']: ''); ?>">
+            <input type="text" name="titulo" placeholder="Título" value="<?php echo isset($produtoEdit['titulo'])? $produtoEdit['titulo']: ''; ?>">
+            <input type="text" name="descricao" placeholder="Descrição" value="<?php echo isset($produtoEdit['descricao'])? $produtoEdit['descricao']: ''; ?>">
             <input type="text" name="valor" placeholder="Valor" value="<?php echo (isset($produtoEdit['valor'])? $produtoEdit['valor']: ''); ?>">
             <button> <?php echo (isset($editando)? 'Actualizar':'Adicionar') ?> </button>
             <?php if(isset($editando)): ?>

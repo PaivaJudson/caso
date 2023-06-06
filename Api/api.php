@@ -87,6 +87,19 @@
                    header('location:../sistema/');
 
                     break;
+                case "/sistema/produto/salvar":
+                    if(!salvarProdutos($_POST)){
+                        
+                        $msg = "Erro ao actualizar o registo!";
+                        $produtos = getProdutos();
+                        include("Paginas/home.php");
+
+                        break;
+                    }
+                    
+                   header('location:../sistema/');
+
+                    break;
                 default:
                     $produtos = getProdutos();
                     include("Paginas/home.php");

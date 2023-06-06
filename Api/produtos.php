@@ -51,6 +51,23 @@
         return $conexao->lastInsertId();
     }
 
+    function salvarProdutos($produto){
+        $conexao = getConexao();
+        $conexao->beginTransaction();
+        $update = "update produtos set titulo=:titulo, descricao=:descricao, valor=:valor  where id=:id";
+
+        $stmt = $conexao->prepare($update);
+        $stmt->bindValue(':titulo', $produto['titulo']);
+        $stmt->bindValue(':descricao', $produto['descricao']);
+        $stmt->bindValue(':valor', $produto['valor']);
+        $stmt->bindValue(':id', $produto['id']);
+
+        $retorno = $stmt->execute();
+         $conexao->commit();
+
+        return $retorno;
+    }
+
     function buscarProdutoID($produtoId){
         
         $conexao = getConexao();
