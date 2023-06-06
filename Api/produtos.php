@@ -25,7 +25,7 @@
         $resultados = [];
 
         foreach($produtos as $produto){
-            $existe = in_array($busca, $produto);
+            $existe = in_array(strtolower($busca), array_map('strtolower',$produto));
 
             if($existe){
                 array_push($resultados, $produto);
@@ -38,7 +38,7 @@
 
     function adicionarProdutos($produto){
         $conexao = getConexao();
-
+        
         $inserir = "INSERT INTO PRODUTOS (titulo, descricao, valor) values (:titulo, :descricao, :valor)";
 
         $stmt = $conexao->prepare($inserir);

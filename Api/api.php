@@ -32,11 +32,12 @@
                     break;
                 case "/sistema/busca":
                     // nao esta captando o valor da busca 
-                    $produtos = buscaProdutos($_GET['busca']);
+                    var_dump($_GET);
+                    $produtos = buscaProdutos($_POST['busca']);
                     include("Paginas/home.php");
                     break;
                 case "/sistema/adicionar":
-                    var_dump($_POST); exit();
+                    
                     break;
                 default:
                     $produtos = getProdutos();
@@ -62,11 +63,21 @@
                     break;
                 case "/sistema/busca":
                     // nao esta captando o valor da busca 
-                    $produtos = buscaProdutos($_GET['busca']);
+                    
+                    $produtos = buscaProdutos($_POST['busca']);
                     include("Paginas/home.php");
                     break;
                 case "/sistema/adicionar":
-                    echo adicionarProdutos($_POST);
+                    if(!adicionarProdutos($_POST)){
+                        $msg = "Erro ao salvar o registo!";
+                        $produtos = getProdutos();
+                        include("Paginas/home.php");
+
+                        break;
+                    }
+
+                   header('location:../sistema/');
+
                     break;
                 default:
                     $produtos = getProdutos();
