@@ -4,6 +4,7 @@
     include('usuarios.php');
     include('produtos.php');
     include('db.php');
+    include('validacao.php');
 
 
     function getPagina(){
@@ -47,6 +48,16 @@
                  
                     
                     break;
+                case "/sistema/produto/deletar":
+
+                    $request = $_SERVER['REQUEST_URI'];
+                    $request = explode("=", $request);
+                    
+                    $retorno = deletarProdutoID($request[1]);
+                    
+                    header('location:../sistema/');
+                    
+                    break;
                 default:
                     $produtos = getProdutos();
                     include("Paginas/home.php");
@@ -76,6 +87,14 @@
                     include("Paginas/home.php");
                     break;
                 case "/sistema/adicionar":
+                    $msg = validaProdutos($_POST);
+                    if($msg){
+                        $produtos = getProdutos();
+                        $produtoEdit = $_POST;
+                        include("Paginas/home.php");
+                        break;
+                    }
+
                     if(!adicionarProdutos($_POST)){
                         $msg = "Erro ao salvar o registo!";
                         $produtos = getProdutos();
@@ -88,6 +107,14 @@
 
                     break;
                 case "/sistema/produto/salvar":
+                    $msg = validaProdutos($_POST);
+                    if($msg){
+                        $produtos = getProdutos();
+                        $produtoEdit = $_POST;
+                        include("Paginas/home.php");
+                        break;
+                    }
+                   
                     if(!salvarProdutos($_POST)){
                         
                         $msg = "Erro ao actualizar o registo!";

@@ -18,7 +18,7 @@
                 <?php foreach($produtos as $produto): ?>
                     <li class="list-group-item"><?php echo $produto['titulo']. " - ". $produto['descricao'] . " - " . number_format($produto['valor'], 2, ", ", ".") ?> 
                         <a href="/sistema/produto/editar?id=<?php echo $produto['id'] ?>" class="btn btn-secondary" role="button" aria-disabled="true">Editar</a>
-                        <a href="/sistema/produto/editar?id=<?php echo $produto['id'] ?>" class="btn btn-secondary" role="button" aria-disabled="true">Deletar</a>
+                        <a href="/sistema/produto/deletar?id=<?php echo $produto['id'] ?>" class="btn btn-secondary" role="button" aria-disabled="true">Deletar</a>
                     </li>
                 <?php endforeach; ?>
             </ul>

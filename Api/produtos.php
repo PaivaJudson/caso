@@ -68,6 +68,19 @@
         return $retorno;
     }
 
+    function deletarProdutoID($id){
+        
+        $conexao = getConexao();
+
+        $deletar = "DELETE FROM produtos WHERE id=:id";
+        $stmt = $conexao->prepare($deletar);
+        $stmt->bindValue(':id', $id);
+        
+        $retorno = $stmt->execute();
+        
+        return $retorno;
+    }
+
     function buscarProdutoID($produtoId){
         
         $conexao = getConexao();
